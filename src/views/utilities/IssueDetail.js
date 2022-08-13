@@ -28,7 +28,7 @@ const Typography = () => {
         const response = await callAPI();
         const status = response?.status;
         if (status === 200) {
-            setData(response?.data);
+            setData(response?.data?.Issue);
         }
     };
 
