@@ -9,6 +9,7 @@ const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')))
 
 // utilities routing
 const Kubernetes = Loadable(lazy(() => import('views/utilities/Kubernetes')));
+const CSKH = Loadable(lazy(() => import('views/utilities/CSKH')));
 const Databases = Loadable(lazy(() => import('views/utilities/Databases')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const Issues = Loadable(lazy(() => import('views/utilities/Issues')));
@@ -44,6 +45,15 @@ const MainRoutes = {
                 {
                     path: 'kubernetes',
                     element: <Kubernetes />
+                }
+            ]
+        },
+        {
+            path: 'utils',
+            children: [
+                {
+                    path: 'cskh',
+                    element: <CSKH />
                 }
             ]
         },

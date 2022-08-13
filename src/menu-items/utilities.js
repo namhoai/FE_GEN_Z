@@ -1,5 +1,5 @@
 // assets
-import { IconDeviceComputerCamera, IconDatabase, IconShadow, IconWindmill, IconAlignLeft } from '@tabler/icons';
+import { IconDeviceComputerCamera, IconDatabase, IconShadow, IconWindmill, IconAlignLeft, IconPhoneCall } from '@tabler/icons';
 
 // constant
 const icons = {
@@ -7,7 +7,8 @@ const icons = {
     IconDatabase,
     IconShadow,
     IconWindmill,
-    IconAlignLeft
+    IconAlignLeft,
+    IconPhoneCall
 };
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
@@ -70,6 +71,14 @@ const utilities = {
                     breadcrumbs: false
                 }
             ]
+        },
+        {
+            id: 'util-chat',
+            title: 'CSKH',
+            type: 'item',
+            url: '/utils/cskh',
+            icon: icons.IconPhoneCall,
+            breadcrumbs: false
         }
     ]
 };

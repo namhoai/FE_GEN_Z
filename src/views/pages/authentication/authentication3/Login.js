@@ -98,7 +98,7 @@ const Login = (props) => {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Button style={{ width: '100%' }} onClick={onSubmit} variant="outlined">
-                                            Submit
+                                            Login
                                         </Button>
                                     </Grid>
                                     <Grid item xs={12}>

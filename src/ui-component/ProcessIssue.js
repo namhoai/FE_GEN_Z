@@ -5,26 +5,18 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
 const steps = [
     {
-        label: 'Select campaign settings',
+        label: 'INFRASTRUCTURE CHECKING',
         description: `For each ad campaign that you create, you can control how much
               you're willing to spend on clicks and conversions, which networks
               and geographical locations you want your ads to show on, and more.`
     },
     {
-        label: 'Create an ad group',
-        description: 'An ad group contains one or more ads which target a shared set of keywords.'
-    },
-    {
-        label: 'Create an ad',
-        description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`
+        label: 'INFRASTRUCTURE HANDLING THE ISSUE',
+        description: `Feedback: Hạ tầng mạng của chúng tôi hiện đang gặp sự cố, Chúng tôi đang xử lý sự cố và khởi tạo lại dịch vụ giúp bạn`
     }
 ];
 
@@ -49,16 +41,6 @@ export default function ProcessIssue() {
                         </StepLabel>
                         <StepContent>
                             <Typography>{step.description}</Typography>
-                            <Box sx={{ mb: 2 }}>
-                                <div>
-                                    <Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}>
-                                        Continue
-                                    </Button>
-                                    <Button disabled={index === 0} onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
-                                        Back
-                                    </Button>
-                                </div>
-                            </Box>
                         </StepContent>
                     </Step>
                 ))}

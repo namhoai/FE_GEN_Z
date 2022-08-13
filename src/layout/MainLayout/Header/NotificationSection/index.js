@@ -148,7 +148,7 @@ const NotificationSection = () => {
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <Grid container direction="column" spacing={2}>
-                                        <div style={{ width: '800px', height: '800px' }}>
+                                        <div style={{ width: '800px', height: '500px' }}>
                                             <CometChatUI />
                                         </div>
                                     </Grid>
