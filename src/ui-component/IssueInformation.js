@@ -4,22 +4,35 @@ import { Avatar, Button } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import NotificationSection from '../layout/MainLayout/Header/NotificationSection';
 
-function IssueInformation() {
+function IssueInformation(props) {
+    const { data } = props;
+
+    const downloadTxtFile = () => {
+        const element = document.createElement('a');
+        const file = new Blob([data?.dataLog], {
+            type: 'text/plain'
+        });
+        element.href = URL.createObjectURL(file);
+        element.download = `log-file-${Date.now()}.txt`;
+        document.body.appendChild(element);
+        element.click();
+    };
+
     return (
         <>
             <div style={{ float: 'right', width: '50%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div style={{ width: 200, padding: 10, background: '#F9E79F', borderRadius: 5, textAlign: 'center' }}>
                         <span>Error Code:</span>&nbsp;&nbsp;
-                        <b>VM_0022</b>
+                        <b style={{ textTransform: 'uppercase' }}>{data?.errorCode}</b>
                     </div>
                     <div style={{ width: 200, padding: 10, background: '#F5B7B1', borderRadius: 5, textAlign: 'center' }}>
                         <span>Issue ID:</span>&nbsp;&nbsp;
-                        <b>125</b>
+                        <b>{data?.id}</b>
                     </div>
                     <div style={{ width: 200, padding: 10, background: '#85C1E9', borderRadius: 5, textAlign: 'center' }}>
                         <span>Tenant:</span>&nbsp;&nbsp;
-                        <b>00001-XPLAT01</b>
+                        <b>{data?.tenantId}</b>
                     </div>
                 </div>
                 <br />
@@ -29,7 +42,7 @@ function IssueInformation() {
                     <span>Data Log: </span>
                     <div>
                         <br />
-                        <Button variant="outlined" startIcon={<DownloadIcon />}>
+                        <Button onClick={downloadTxtFile} variant="outlined" startIcon={<DownloadIcon />}>
                             Log File
                         </Button>
                     </div>
@@ -51,7 +64,7 @@ function IssueInformation() {
                 <div>
                     <div>Status:</div>
                     <br />
-                    <IconStatus status={1} />
+                    <IconStatus textStatus={data?.status} status={1} />
                 </div>
             </div>
         </>

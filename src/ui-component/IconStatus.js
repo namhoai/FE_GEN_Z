@@ -16,14 +16,14 @@ const getDataStatusType = () => ({
 });
 
 function IconStatus(props) {
-    const { status } = props;
+    const { status, textStatus } = props;
     const dataStatusType = getDataStatusType();
     const type = dataStatusType[status];
     return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
             {type?.icon}
             &nbsp;&nbsp;
-            <b>{type?.text}</b>
+            <b style={{ textTransform: 'uppercase' }}>{textStatus || type?.text}</b>
         </div>
     );
 }

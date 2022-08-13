@@ -5,3 +5,5 @@ export const COMETCHAT_CONSTANTS = {
     REGION: 'us',
     AUTH_KEY: '7ffaf7cc4c32a9169bcd7290021554f33445ae1e'
 };
+
+export const API_DOMAIN = 'http://10.0.0.10:8010';

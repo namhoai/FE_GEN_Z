@@ -7,6 +7,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { API_DOMAIN } from '../consts';
+import { Chip } from '@mui/material';
+import { fromNow } from '../utils';
 
 // eslint-disable-next-line camelcase
 function createData(id, code, service, handler, type, status, at) {
@@ -21,6 +26,21 @@ const rows = [
 
 export default function TableIssues() {
     const navigate = useNavigate();
+    const [data, setData] = useState([]);
+
+    const callAPI = () => axios.get(`${API_DOMAIN}/issue`);
+
+    const getData = async () => {
+        const response = await callAPI();
+        const status = response?.status;
+        if (status === 200) {
+            setData(response?.data);
+        }
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
 
     const onClick = (id) => {
         navigate(`/utils/issue-detail?id=${id}`);
@@ -41,23 +61,29 @@ export default function TableIssues() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {data.map((row) => (
                         <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                             <TableCell align="left">
                                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                                 <a
                                     style={{ textDecoration: 'underline', color: '#002cec', cursor: 'pointer' }}
-                                    onClick={() => onClick(row.id)}
+                                    onClick={() => onClick(row.issueJiraID)}
                                 >
                                     {row.id}
                                 </a>
                             </TableCell>
-                            <TableCell align="left">{row.code}</TableCell>
+                            <TableCell align="left">{row.errorCode}</TableCell>
                             <TableCell align="center">{row.service}</TableCell>
-                            <TableCell align="right">{row.handler}</TableCell>
-                            <TableCell align="right">{row.type}</TableCell>
-                            <TableCell align="right">{row.status}</TableCell>
-                            <TableCell align="right">{row.at}</TableCell>
+                            <TableCell align="right">Vũ Hoài Nam (NamVH34)</TableCell>
+                            <TableCell align="right">Normal</TableCell>
+                            <TableCell align="right">
+                                <Chip
+                                    color="primary"
+                                    label={<span style={{ textTransform: 'uppercase' }}>{row.status}</span>}
+                                    variant="outlined"
+                                />
+                            </TableCell>
+                            <TableCell align="right">{fromNow(row.CreatedAt)}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
