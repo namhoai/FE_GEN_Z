@@ -26,11 +26,23 @@ export default function TableKubernetes() {
     const onError = () => {
         debugger;
         try {
-            axios.post(`${API_DOMAIN}/issue`, {
-                errorCode: 'vm_001',
-                content: `K8s_Error_Network ${Math.random()}`,
-                reporterName: 'xplat'
+            axios({
+                method: 'post',
+                url: `${API_DOMAIN}/issue`,
+                data: {
+                    errorCode: 'k8s_002',
+                    content: 'K8s_Error_Network',
+                    reporterName: 'xplat',
+                },
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8',
+                },
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
             });
+
         } catch (error) {
             
         }
