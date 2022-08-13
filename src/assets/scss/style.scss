@@ -53,6 +53,17 @@
     }
 }
 
+#atlwdg-trigger {
+    transform: rotate(1deg);
+    transform-origin: top left;
+    left: 91%;
+    bottom: 5%;
+    padding: 10px;
+    top: unset;
+    border-radius: 10px;
+    background-color: #0052cc;
+}
+
 // ==============================|| ANIMATION KEYFRAMES ||============================== //
 
 @keyframes wings {

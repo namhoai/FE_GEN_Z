@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Drawer, useMediaQuery } from '@mui/material';
+import { Box, Button, Drawer, useMediaQuery } from '@mui/material';
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -13,10 +13,12 @@ import MenuList from './MenuList';
 import LogoSection from '../LogoSection';
 import MenuCard from './MenuCard';
 import { drawerWidth } from 'store/constant';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/login_chat/action';
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
-const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
+const Sidebar = ({ drawerOpen, drawerToggle, window, onLogout }) => {
     const theme = useTheme();
     const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -37,7 +39,9 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                     }}
                 >
                     <MenuList />
-                    <MenuCard />
+                    <Button onClick={onLogout} style={{ width: '100%' }} variant="outlined">
+                        Logout
+                    </Button>
                 </PerfectScrollbar>
             </BrowserView>
             <MobileView>
@@ -79,10 +83,14 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
     );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+    onLogout: () => dispatch(actions.logout())
+});
+
 Sidebar.propTypes = {
     drawerOpen: PropTypes.bool,
     drawerToggle: PropTypes.func,
     window: PropTypes.object
 };
 
-export default Sidebar;
+export default connect(null, mapDispatchToProps)(Sidebar);

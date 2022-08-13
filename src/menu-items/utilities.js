@@ -1,40 +1,49 @@
 // assets
-import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
+import { IconDeviceComputerCamera, IconDatabase, IconShadow, IconWindmill, IconAlignLeft } from '@tabler/icons';
 
 // constant
 const icons = {
-    IconTypography,
-    IconPalette,
+    IconDeviceComputerCamera,
+    IconDatabase,
     IconShadow,
-    IconWindmill
+    IconWindmill,
+    IconAlignLeft
 };
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
 const utilities = {
     id: 'utilities',
-    title: 'Utilities',
+    title: 'Application',
     type: 'group',
     children: [
         {
-            id: 'util-typography',
-            title: 'Typography',
+            id: 'util-issue',
+            title: 'Issues',
             type: 'item',
-            url: '/utils/util-typography',
-            icon: icons.IconTypography,
+            url: '/utils/issues',
+            icon: icons.IconAlignLeft,
+            breadcrumbs: false
+        },
+        {
+            id: 'util-typography',
+            title: 'Kubernetes',
+            type: 'item',
+            url: '/utils/kubernetes',
+            icon: icons.IconDeviceComputerCamera,
             breadcrumbs: false
         },
         {
             id: 'util-color',
-            title: 'Color',
+            title: 'Databases',
             type: 'item',
-            url: '/utils/util-color',
-            icon: icons.IconPalette,
+            url: '/utils/database',
+            icon: icons.IconDatabase,
             breadcrumbs: false
         },
         {
             id: 'util-shadow',
-            title: 'Shadow',
+            title: 'Monitoring',
             type: 'item',
             url: '/utils/util-shadow',
             icon: icons.IconShadow,
@@ -42,20 +51,20 @@ const utilities = {
         },
         {
             id: 'icons',
-            title: 'Icons',
+            title: 'API management',
             type: 'collapse',
             icon: icons.IconWindmill,
             children: [
                 {
                     id: 'tabler-icons',
-                    title: 'Tabler Icons',
+                    title: 'API',
                     type: 'item',
                     url: '/icons/tabler-icons',
                     breadcrumbs: false
                 },
                 {
                     id: 'material-icons',
-                    title: 'Material Icons',
+                    title: 'Kong',
                     type: 'item',
                     url: '/icons/material-icons',
                     breadcrumbs: false

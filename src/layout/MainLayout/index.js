@@ -1,6 +1,7 @@
+/* eslint-disable */
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import {Outlet, Navigate, useLocation} from 'react-router-dom';
 
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
@@ -64,7 +65,9 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
-const MainLayout = () => {
+const MainLayout = (props) => {
+    const { isLoggedIn } = props;
+    const location = useLocation();
     const theme = useTheme();
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -79,6 +82,10 @@ const MainLayout = () => {
         dispatch({ type: SET_MENU, opened: !matchDownMd });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [matchDownMd]);
+
+    if (!isLoggedIn) {
+        return <Navigate to={{ pathname: `/login?redirect=${location?.pathname}&search=${location?.search}`}} />;
+    }
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -113,4 +120,8 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout;
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.loginChat?.isLoggedIn
+});
+
+export default connect(mapStateToProps, null)(MainLayout);

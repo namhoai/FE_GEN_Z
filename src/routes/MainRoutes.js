@@ -8,9 +8,11 @@ import Loadable from 'ui-component/Loadable';
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
 // utilities routing
-const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
-const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
+const Kubernetes = Loadable(lazy(() => import('views/utilities/Kubernetes')));
+const Databases = Loadable(lazy(() => import('views/utilities/Databases')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
+const Issues = Loadable(lazy(() => import('views/utilities/Issues')));
+const IssueDetail = Loadable(lazy(() => import('views/utilities/IssueDetail')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 
@@ -40,8 +42,8 @@ const MainRoutes = {
             path: 'utils',
             children: [
                 {
-                    path: 'util-typography',
-                    element: <UtilsTypography />
+                    path: 'kubernetes',
+                    element: <Kubernetes />
                 }
             ]
         },
@@ -49,8 +51,8 @@ const MainRoutes = {
             path: 'utils',
             children: [
                 {
-                    path: 'util-color',
-                    element: <UtilsColor />
+                    path: 'database',
+                    element: <Databases />
                 }
             ]
         },
@@ -60,6 +62,24 @@ const MainRoutes = {
                 {
                     path: 'util-shadow',
                     element: <UtilsShadow />
+                }
+            ]
+        },
+        {
+            path: 'utils',
+            children: [
+                {
+                    path: 'issues',
+                    element: <Issues />
+                }
+            ]
+        },
+        {
+            path: 'utils',
+            children: [
+                {
+                    path: 'issue-detail',
+                    element: <IssueDetail />
                 }
             ]
         },
